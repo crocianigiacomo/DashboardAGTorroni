@@ -17,8 +17,8 @@ mesi_dict = {1: 'GENNAIO', 2: 'FEBBRAIO', 3: 'MARZO',
 cereali = ["MEDICA","COLZA","FRUMENTO TENERO","FRUMENTO DURO","ORZO","GIRASOLE","MAIS"]
 
 # Leggi csv cereali azienda torroni e prezzi mercato di riferimento
-df_cereali = pd.read_csv("DashboardAGTorroni/data/CEREALI_TERRENO_PRODUZIONE.csv", sep=";")
-df_prezzi = pd.read_csv("DashboardAGTorroni/data/PREZZI_CEREALI.csv", sep=";")
+df_cereali = pd.read_csv("data/CEREALI_TERRENO_PRODUZIONE.csv", sep=";")
+df_prezzi = pd.read_csv("data/PREZZI_CEREALI.csv", sep=";")
 
 # Quantità annue totali prodotte da Torroni
 tot_medica = df_cereali['PRODUZIONE_ANNUA'][0]
@@ -171,6 +171,9 @@ sales_data = {
     "Gain": sales_gains,
 }   
 
-df = pd.DataFrame(sales_data)
+# ordino per data
 df.sort_values(by = "Date", ascending=True, inplace=True)
+
+# creo dataframe e lo salvo in csv
+df = pd.DataFrame(sales_data)
 df.to_csv("DashboardAGTorroni\data\sales_data.csv",index=False)
