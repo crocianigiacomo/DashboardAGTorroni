@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import dash
 import dash_bootstrap_components as dbc
@@ -6,22 +7,22 @@ import plotly.express as px
 
 # Lettura dati csv
 meteo2024 = pd.read_csv("data/meteo2024.csv", sep=",")
-prezziCereali = pd.read_csv("data/PREZZI_CEREALI.csv",sep=";")
+prezziCereali = pd.read_csv("data/prezzi_cereali.csv",sep=";")
 produzione = pd.read_csv("data/production_data.csv",sep=",")
 vendita = pd.read_csv("data/sales_data.csv",sep=",")
-ettari = pd.read_csv("data/CEREALI_TERRENO_PRODUZIONE.csv", sep=";")
+ettari = pd.read_csv("data/cereali_terreno.csv", sep=";")
 
-cereal_order = ["MEDICA", "COLZA", "FRUMENTO TENERO", "FRUMENTO DURO", "ORZO", "GIRASOLE", "MAIS"] # ORDINE PRESTABILITO CHE UTILIZZERO NEI GRAFICI DELLE PRESTAZIONI
+cereal_order = ["COLZA", "FRUMENTO TENERO", "FRUMENTO DURO","GIRASOLE", "MAIS", "MEDICA", "ORZO"] # ORDINE PRESTABILITO CHE UTILIZZERO NEI GRAFICI DELLE PRESTAZIONI
 
 # ASSEGNO COLORI AD OGNI CEREALE PER RENDERE PIÙ IMMEDIATA LETTURA I GRAFICI
 colormap = {
-    "MEDICA": "#636EFA",
+    "MEDICA": "#043505",
     "COLZA": "#EF553B",
-    "FRUMENTO TENERO": "#00CC96",
-    "FRUMENTO DURO": "#AB63FA",
-    "ORZO": "#FFA15A",
-    "GIRASOLE": "#19D3F3",
-    "MAIS": "#FF6692"
+    "FRUMENTO TENERO": "#AEAE00",
+    "FRUMENTO DURO": "#433900",
+    "ORZO": "#5A2802",
+    "GIRASOLE": "#FCFFCD",
+    "MAIS": "#239708"
 }
 
 # CALCOLO IL GUADAGNO PER OGNI CEREALE E DI CONSEGUENZA CALCOLO IL GUADAGNO PER ETTARO COLTIVATO
@@ -128,7 +129,7 @@ dashboard.layout = dbc.Container(
                         ],
                         className="shadow h-100 border border-primary border-4 p-1", # aggiungo un po' di ombre per effetto 3d e un bordo su tutti i lati
                     ),
-                    width=4, className="mb-2" # ampiezza un terzo
+                    xs=12, md=4, className="mb-2" # ampiezza un terzo
                 ),
                 # Totale vendite
                 dbc.Col(
@@ -167,7 +168,7 @@ dashboard.layout = dbc.Container(
                         ],
                         className="shadow h-100 border border-success border-4 p-1"                        
                     ),
-                    width=4, className="mb-2"
+                    xs=12, md=4, className="mb-2"
                 ),
                 # Totale prodotto
                 dbc.Col(
@@ -206,7 +207,7 @@ dashboard.layout = dbc.Container(
                         ],
                         className="shadow h-100 border border-info border-4 p-1"
                     ),
-                    width=4, className="mb-2"
+                    xs=12, md=4, className="mb-2"
                 )
             ]
         ),

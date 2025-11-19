@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 
 # Generazione date
 start_date = datetime(2024, 1, 1)
-dates = [start_date + timedelta(days=i) for i in range(365)]
 
 # Dizionario per mappare i mesi (lo userò per paragonare colonne di csv con date in datetime)
 mesi_dict = {1: 'GENNAIO', 2: 'FEBBRAIO', 3: 'MARZO', 
@@ -17,8 +16,8 @@ mesi_dict = {1: 'GENNAIO', 2: 'FEBBRAIO', 3: 'MARZO',
 cereali = ["MEDICA","COLZA","FRUMENTO TENERO","FRUMENTO DURO","ORZO","GIRASOLE","MAIS"]
 
 # Leggi csv cereali azienda torroni e prezzi mercato di riferimento
-df_cereali = pd.read_csv("data/CEREALI_TERRENO_PRODUZIONE.csv", sep=";")
-df_prezzi = pd.read_csv("data/PREZZI_CEREALI.csv", sep=";")
+df_cereali = pd.read_csv("data/cereali_terreno.csv", sep=";")
+df_prezzi = pd.read_csv("data/prezzi_cereali.csv", sep=";")
 
 # Quantità annue totali prodotte da Torroni
 tot_medica = df_cereali['PRODUZIONE_ANNUA'][0]
