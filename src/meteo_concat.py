@@ -29,6 +29,6 @@ meteo2024["FENOMENI"] = meteo2024["FENOMENI"].replace("pioggia nebbia", "pioggia
 meteo2024["FENOMENI"] = meteo2024["FENOMENI"].replace("pioggia neve", "pioggia")
 meteo2024["FENOMENI"] = meteo2024["FENOMENI"].replace("pioggia temporale nebbia", "pioggia")
 
-# cro un dataframe e lo salvo in csv
+# creo un dataframe e lo salvo in csv
 df = pd.DataFrame(meteo2024)
 df.to_csv("data/meteo2024.csv",index=False)
